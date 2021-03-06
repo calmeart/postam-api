@@ -16,7 +16,8 @@ router.route('/')
     body,
     username,
     usermail,
-    date: new Date()
+    date: new Date(),
+    platformId
   })
   await tempMessage.save();
   res.redirect(`${req.params.userId}/messages`)
