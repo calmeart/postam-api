@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+
+<div class="centerBox">
+  <h1>This is platforms page</h1>
+  <form class="text-center" action="/thecreator/platforms" method="post">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" name="platformName" id="floatingPlatformName" placeholder="Enter Your Script">
+      <label for="floatingPlatformName">Enter Your Script</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" name="redirectAddress" id="floatingRedirect" placeholder="Enter Your Script">
+      <label for="floatingRedirect">Enter Your Script</label>
+    </div>
+    <button class="btn btn-primary" type="submit" name="createPlatform"> Submit </button>
+  </form>
+</div>
+
+
+<%- include('partials/footer') %>

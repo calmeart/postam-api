@@ -1,0 +1,51 @@
+:root {
+  --main-color: #78bbe6;
+  --second-color: #1b435d;
+  --font-color: #d5eeff;
+  --icon-color: #ff895d;
+  --highlight-color: #f16821;
+}
+
+body {
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--second-color);
+  color: var(--font-color);
+}
+
+
+/***************************LANDING PAGE********************************/
+
+.centerBox {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/**************************MESSAGES*************************************/
+.card {
+  background-color: var(--second-color);
+  border-radius: 1rem;
+}
+
+.card:hover {
+  box-shadow: 0 0 15px var(--icon-color);
+  transition: box-shadow 0.5s;
+}
+
+.card-body {
+  min-height: 136px;
+}
+
+.messageCard {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--bs-gray-dark);
+}
+
+/************************FOOTER PAGE*************************************/
+footer {
+  padding: 1rem 1rem 0;
+  background-color: #343434;
+}

@@ -1,0 +1,22 @@
+<%- include('partials/header') -%>
+
+
+<div class="container">
+
+  <% foundMessages.forEach(item => { %>
+    <div class="card mb-5">
+      <div class="card-header messageCard">
+        <p><%= item.username %></p>
+        <p><%= item.date.toUTCString() %></p>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= item.usermail %></h5>
+        <p class="card-text"><%= item.subject %></p>
+        <p class="card-text"><%= item.body %></p>
+      </div>
+    </div>
+  <% }) %>
+
+</div>
+
+<%- include('partials/footer') -%>
