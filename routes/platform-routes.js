@@ -4,8 +4,9 @@ const Platform = require('../models/platform-model');
 const Message = require('../models/message-model');
 
 router.route('/')
-.get((req, res) => {
-  res.render('platforms')
+.get(async (req, res) => {
+  const foundPlatforms = await Platform.find({});
+  res.render('platforms', {foundPlatforms});
 }).post(async (req, res) => {
   console.log(req.params);
   const tempPlatform = new Platform({

@@ -14,8 +14,8 @@ router.route('/')
   const tempMessage = new Message({
     subject,
     body,
-    username,
-    usermail,
+    senderName,
+    senderMail,
     date: new Date(),
     platformId
   })
