@@ -23,15 +23,35 @@ body {
   transform: translate(-50%, -50%);
 }
 
+/**************************PLATFORMS************************************/
+
+#v-pills-tab {
+  width: 250px;
+}
+
+#v-pills-tabContent {
+  width: calc(100% - 250px);
+  padding-right: 1rem;
+}
+
+.header {
+  background-color: #343434;
+  border-radius: .25rem;
+}
+
+.form-floating>.form-control {
+  height: calc(2.75rem + 2px) !important;
+}
+
+#collapseForm label {
+  color: #000;
+  font-size: .75rem;
+  line-height: 1;
+}
+
 /**************************MESSAGES*************************************/
 .card {
   background-color: var(--second-color);
-  border-radius: 1rem;
-}
-
-.card:hover {
-  box-shadow: 0 0 15px var(--icon-color);
-  transition: box-shadow 0.5s;
 }
 
 .card-body {

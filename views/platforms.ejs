@@ -1,36 +1,65 @@
 <%- include('partials/header') %>
 
-<div class="centerBox">
-  <h1>This is platforms page</h1>
-  <form class="text-center" action="/thecreator/platforms" method="post">
-    <div class="form-floating mb-3">
-      <input type="text" class="form-control" name="platformName" id="floatingPlatformName" placeholder="Enter Your Script">
-      <label for="floatingPlatformName">Enter Your Script</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input type="text" class="form-control" name="redirectAddress" id="floatingRedirect" placeholder="Enter Your Script">
-      <label for="floatingRedirect">Enter Your Script</label>
-    </div>
-    <button class="btn btn-primary" type="submit" name="createPlatform"> Submit </button>
-  </form>
 
-  <div class="container">
-    <div class="d-flex">
-      <% messagesArray.forEach(item => { %>
-        <div class="card m-3" style="width: 18rem;">
-        <div class="card-header">
-          <%= item.platformName %>
+
+<div class="header mb-3 p-3">
+  <h1>thecreator</h1>
+</div>
+
+
+<div class="d-flex align-items-start">
+  <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <% messagesArray.forEach(item => { %>
+    <button class="nav-link" id="v-pills-<%= item.platformName %>-tab" data-bs-toggle="pill" data-bs-target="#v-pills-<%= item.platformName %>" type="button" role="tab" aria-controls="v-pills-<%= item.platformName %>"
+      aria-selected="false"><%= item.platformName %></button>
+    <% }) %>
+    <button class="nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
+    Create Platform
+  </button>
+  <div class="collapse" id="collapseForm">
+  <div class="card card-body">
+    <form class="text-center" action="/thecreator/platforms" method="post">
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="platformName" id="floatingPlatformName" placeholder="Enter Your Script">
+        <label for="floatingPlatformName">Enter Platform Name</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="redirectAddress" id="floatingRedirect" placeholder="Enter Your Script">
+        <label for="floatingRedirect">Enter Redirect address</label>
+      </div>
+      <button class="btn btn-primary w-100" type="submit" name="createPlatform"> Submit </button>
+    </form>
+  </div>
+</div>
+  </div>
+  <div class="tab-content" id="v-pills-tabContent">
+    <% messagesArray.forEach(item => { %>
+    <div class="tab-pane fade" id="v-pills-<%= item.platformName %>" role="tabpanel" aria-labelledby="v-pills-<%= item.platformName %>-tab">
+      <% item.platformMessages.forEach(message => { %>
+      <div class="card mb-5">
+        <div class="card-header messageCard">
+          <p><%= message.senderName %></p>
+          <p class="card-text"><%= message.senderMail %></p>
+          <p><%= message.date.toUTCString() %></p>
         </div>
-        <ul class="list-group list-group-flush">
-          <% item.platformMessages.forEach(item => { %>
-            <li class="list-group-item"><%= item.subject %> || <%= item.senderName %></li>
-          <% }) %>
-        </ul>
+        <div class="card-body">
+          <h5 class="card-title"><%= message.subject %></h5>
+
+          <p class="card-text"><%= message.body %></p>
+        </div>
       </div>
       <% }) %>
     </div>
+    <% }) %>
   </div>
 </div>
+
+
+
+
+
+
+
 
 
 
