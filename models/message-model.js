@@ -6,7 +6,8 @@ const messageSchema = new mongoose.Schema({
   senderName: String,
   senderMail: String,
   date: Date,
-  platformId: String
+  platformId: String,
+  userId: String
 });
 
 module.exports = mongoose.model('Message', messageSchema);

@@ -9,18 +9,22 @@ router.route('/')
   res.render('messages', {foundMessages});
 })
 .post(async (req, res) => {
-  console.log(req.params);
-  const {subject, body, username, usermail} = req.body
+  const {subject, body, senderName, senderMail, platformId} = req.body
   const tempMessage = new Message({
     subject,
     body,
     senderName,
     senderMail,
     date: new Date(),
-    platformId
+    platformId,
+    userId: req.params.userId
   })
-  await tempMessage.save();
-  res.redirect(`${req.params.userId}/messages`)
+  await tempMessage.save((err, doc) => {
+    if (err) return res.send(err);
+    res.send(doc);
+  });
+
+  // res.redirect(`${req.params.userId}/messages`)
   // This redirect address must be the redirect of that persons site
 });
 

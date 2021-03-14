@@ -16,15 +16,15 @@
 
   <div class="container">
     <div class="d-flex">
-      <% foundPlatforms.forEach(item => { %>
+      <% messagesArray.forEach(item => { %>
         <div class="card m-3" style="width: 18rem;">
         <div class="card-header">
-          <%= item.platform %>
+          <%= item.platformName %>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">An item</li>
-          <li class="list-group-item">A second item</li>
-          <li class="list-group-item">A third item</li>
+          <% item.platformMessages.forEach(item => { %>
+            <li class="list-group-item"><%= item.subject %> || <%= item.senderName %></li>
+          <% }) %>
         </ul>
       </div>
       <% }) %>

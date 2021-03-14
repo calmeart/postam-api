@@ -2,13 +2,12 @@ const express = require('express');
 const router = express.Router({mergeParams: true});
 const Platform = require('../models/platform-model');
 const Message = require('../models/message-model');
+const messagesArray = require('../middleware/messages-array');
 
 router.route('/')
-.get(async (req, res) => {
-  const foundPlatforms = await Platform.find({});
-  res.render('platforms', {foundPlatforms});
+.get(messagesArray, (req, res) => {
+  res.render('platforms', {messagesArray: req.messagesArray});
 }).post(async (req, res) => {
-  console.log(req.params);
   const tempPlatform = new Platform({
     platform: req.body.platformName,
     redirectAddress: req.body.redirectAddress,
