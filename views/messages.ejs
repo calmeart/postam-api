@@ -3,16 +3,22 @@
 
 <div class="container">
 
-  <% foundMessages.forEach(item => { %>
-    <div class="card mb-5">
+  <% foundMessages.forEach(message => { %>
+    <div class="card mb-3">
       <div class="card-header messageCard">
-        <p><%= item.username %></p>
-        <p><%= item.date.toUTCString() %></p>
+        <div>
+          <p class="mb-0"><%= message.senderName %></p>
+          <p class="mb-0"><%= message.senderMail %></p>
+        </div>
+        <div>
+          <p class="mb-0"><%= message.date.toDateString() %></p>
+          <p class="text-end mb-0"><%= message.date.toTimeString().slice(0,9) %></p>
+        </div>
       </div>
       <div class="card-body">
-        <h5 class="card-title"><%= item.usermail %></h5>
-        <p class="card-text"><%= item.subject %></p>
-        <p class="card-text"><%= item.body %></p>
+        <h5 class="card-title"><%= message.subject %></h5>
+
+        <p class="card-text"><%= message.body %></p>
       </div>
     </div>
   <% }) %>

@@ -5,10 +5,14 @@ const Message = require('../models/message-model');
 
 router.route('/')
 .get(async (req, res) => {
-  const foundMessages = await Message.find({}).sort({date: 'desc'});
-  res.render('messages', {foundMessages});
+  // const foundMessages = await Message.find({}).sort({date: 'desc'});
+  // res.render('messages', {foundMessages});
+  res.redirect('/');
 })
 .post(async (req, res) => {
+  console.log(req.body);
+  var host = req.get('host');
+  var origin = req.get('origin');
   const {subject, body, senderName, senderMail, platformId} = req.body
   const tempMessage = new Message({
     subject,
@@ -17,7 +21,7 @@ router.route('/')
     senderMail,
     date: new Date(),
     platformId,
-    userId: req.params.userId
+    userId: host + " || " + origin
   })
   await tempMessage.save((err, doc) => {
     if (err) return res.send(err);
