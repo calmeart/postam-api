@@ -7,7 +7,7 @@
 </div>
 
 
-<div class="d-flex align-items-start">
+<div class="platformBox">
   <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
     <% messagesArray.forEach(item => { %>
     <button class="nav-link" id="v-pills-<%= item.platformName %>-tab" data-bs-toggle="pill" data-bs-target="#v-pills-<%= item.platformName %>" type="button" role="tab" aria-controls="v-pills-<%= item.platformName %>"
@@ -18,14 +18,14 @@
   </button>
   <div class="collapse" id="collapseForm">
   <div class="card card-body">
-    <form class="text-center" action="/thecreator/platforms" method="post">
+    <form id="createPlatformForm" class="text-center" action="/thecreator/platforms" method="post">
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" name="platformName" id="floatingPlatformName" placeholder="Enter Your Script">
+        <input type="text" class="form-control" name="platformName" id="floatingPlatformName" placeholder="Enter Platform Name">
         <label for="floatingPlatformName">Enter Platform Name</label>
       </div>
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" name="redirectAddress" id="floatingRedirect" placeholder="Enter Your Script">
-        <label for="floatingRedirect">Enter Redirect address</label>
+        <input type="text" class="form-control" name="redirectAddress" id="floatingRedirect" placeholder="Enter Website Address">
+        <label for="floatingRedirect">Enter Website Address</label>
       </div>
       <button class="btn btn-primary w-100" type="submit" name="createPlatform"> Submit </button>
     </form>
@@ -36,11 +36,16 @@
     <% messagesArray.forEach(item => { %>
     <div class="tab-pane fade" id="v-pills-<%= item.platformName %>" role="tabpanel" aria-labelledby="v-pills-<%= item.platformName %>-tab">
       <% item.platformMessages.forEach(message => { %>
-      <div class="card mb-5">
+      <div class="card mb-3">
         <div class="card-header messageCard">
-          <p><%= message.senderName %></p>
-          <p class="card-text"><%= message.senderMail %></p>
-          <p><%= message.date.toUTCString() %></p>
+          <div>
+            <p class="mb-0"><%= message.senderName %></p>
+            <p class="mb-0"><%= message.senderMail %></p>
+          </div>
+          <div>
+            <p class="mb-0"><%= message.date.toDateString() %></p>
+            <p class="text-end mb-0"><%= message.date.toTimeString().slice(0,9) %></p>
+          </div>
         </div>
         <div class="card-body">
           <h5 class="card-title"><%= message.subject %></h5>

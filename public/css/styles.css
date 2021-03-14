@@ -23,7 +23,17 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.form-floating label {
+  color: #000;
+}
+
 /**************************PLATFORMS************************************/
+
+.platformBox {
+  display: flex;
+  align-items: flex-start;
+}
+
 
 #v-pills-tab {
   width: 250px;
@@ -39,14 +49,31 @@ body {
   border-radius: .25rem;
 }
 
-.form-floating>.form-control {
+#createPlatformForm>.form-floating>.form-control {
   height: calc(2.75rem + 2px) !important;
 }
 
 #collapseForm label {
-  color: #000;
   font-size: .75rem;
   line-height: 1;
+}
+
+@media (max-width: 600px) {
+
+  .platformBox {
+    flex-direction: column;
+  }
+
+  #v-pills-tab {
+    width: 100%;
+    font-size: .8rem;
+  }
+
+  #v-pills-tabContent {
+    width: calc(100%);
+    font-size: .8rem;
+    padding: 1rem;
+  }
 }
 
 /**************************MESSAGES*************************************/
@@ -61,7 +88,7 @@ body {
 .messageCard {
   display: flex;
   justify-content: space-between;
-  background-color: var(--bs-gray-dark);
+  background-color:#343434;
 }
 
 /************************FOOTER PAGE*************************************/
