@@ -10,10 +10,10 @@ router.route('/')
   res.redirect('/');
 })
 .post(async (req, res) => {
-  console.log(req.body);
   var host = req.get('host');
   var origin = req.get('origin');
   const {subject, body, senderName, senderMail, platformId} = req.body
+  const foundPlatform = await Platform.findById(platformId);
   const tempMessage = new Message({
     subject,
     body,
@@ -25,11 +25,9 @@ router.route('/')
   })
   await tempMessage.save((err, doc) => {
     if (err) return res.send(err);
-    res.send(doc);
+    // res.send(doc);
+    res.redirect(foundPlatform.redirectAddress);
   });
-
-  // res.redirect(`${req.params.userId}/messages`)
-  // This redirect address must be the redirect of that persons site
 });
 
 module.exports = router

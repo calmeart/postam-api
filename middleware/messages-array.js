@@ -3,7 +3,7 @@ const Message = require('../models/message-model');
 
 module.exports = async (req, res, next) => {
   const foundPlatforms = await Platform.find({});
-  const foundMessages = await Message.find({});
+  const foundMessages = await Message.find({}).sort({date: "desc"});
   messagesArray = [];
   foundPlatforms.forEach(platform => {
     const temp = {
