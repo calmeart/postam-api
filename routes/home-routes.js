@@ -1,10 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const platformRouter = require('./platform-routes');
-const messageRouter = require('./message-routes');
 
 router.use('/:userId/platforms', platformRouter)
-router.use('/:userId/messages', messageRouter)
 
 router.route('/')
 .get((req, res) => {
